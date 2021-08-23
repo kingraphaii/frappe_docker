@@ -1,6 +1,6 @@
 FROM bitnami/node:12-prod
 
-COPY build/isppme-nginx/install_app.sh /install_app
+COPY install_app.sh /install_app
 
 RUN /install_app isppme https://github.com/kingraphaii/isppme
 

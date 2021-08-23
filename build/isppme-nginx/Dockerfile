@@ -1,4 +1,12 @@
-FROM bitnami/node:12-prod
+ARG NODE_IMAGE_TAG=14-buster-slim
+ARG DOCKER_REGISTRY_PREFIX=frappe
+ARG IMAGE_TAG=develop
+
+FROM node:${NODE_IMAGE_TAG}
+
+ARG GIT_REPO=https://github.com/kingraphaii/isppme
+ARG GIT_BRANCH=main
+ARG FRAPPE_BRANCH=${GIT_BRANCH}
 
 COPY install_app.sh /install_app
 RUN chmod +x /install_app && \
@@ -7,13 +15,13 @@ RUN chmod +x /install_app && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
-RUN /install_app isppme https://github.com/kingraphaii/isppme
+RUN /install_app isppme ${GIT_REPO} ${GIT_BRANCH
 
-FROM frappe/erpnext-nginx:edge
+FROM ${DOCKER_REGISTRY_PREFIX}/frappe-nginx:${IMAGE_TAG}
 
 COPY --from=0 /home/frappe/frappe-bench/sites/ /var/www/html/
 COPY --from=0 /rsync /rsync
-RUN echo -n "isppme" >> /var/www/html/apps.txt
+RUN echo "isppme" >> /var/www/html/apps.txt
 
 VOLUME [ "/assets" ]
 

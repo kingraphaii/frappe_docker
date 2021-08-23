@@ -1,13 +1,13 @@
-LETSENCRYPT_EMAIL=email@example.com
+LETSENCRYPT_EMAIL=percival@yate.co.zw
 ERPNEXT_VERSION=edge
 FRAPPE_VERSION=edge
 MARIADB_HOST=mariadb
 MYSQL_ROOT_PASSWORD=admin
-SITE_NAME=erp.example.com
-SITES=`erp.example.com`
+SITE_NAME=v4.isppme.com
+SITES=`v4.isppme.com`
 DB_ROOT_USER=root
 ADMIN_PASSWORD=admin
-INSTALL_APPS=erpnext
+INSTALL_APPS=erpnext,isppme
 ENTRYPOINT_LABEL=traefik.http.routers.erpnext-nginx.entrypoints=websecure
 CERT_RESOLVER_LABEL=traefik.http.routers.erpnext-nginx.tls.certresolver=myresolver
 HTTPS_REDIRECT_RULE_LABEL=traefik.http.routers.http-catchall.rule=hostregexp(`{host:.+}`)

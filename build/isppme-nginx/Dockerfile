@@ -15,7 +15,7 @@ RUN chmod +x /install_app && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
-RUN /install_app isppme ${GIT_REPO} ${GIT_BRANCH
+RUN /install_app isppme ${GIT_REPO} ${GIT_BRANCH}
 
 FROM ${DOCKER_REGISTRY_PREFIX}/frappe-nginx:${IMAGE_TAG}
 

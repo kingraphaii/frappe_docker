@@ -13,7 +13,7 @@ RUN chmod +x /install_app && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
-RUN /install_app isppme ${GIT_REPO}
+RUN /install_app isppme ${GIT_REPO} main develop
 
 FROM ${DOCKER_REGISTRY_PREFIX}/frappe-nginx:${IMAGE_TAG}
 
